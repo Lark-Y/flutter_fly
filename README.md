@@ -3,6 +3,8 @@
 ## 简介
 
 Flutter Fly是什么？Flutter Fly是一款开源的Flutter 项目，App内集成了160+Flutter基础控件的详细介绍及用法
+
+master使用flutter 3.x构建，如果你的flutter版本是2.x，请切换分支`flutter_fly(2.x)`
 ## 欢迎页：
 
 <img src="https://github.com/781238222/imgs/raw/master/flutter_fly/fly_1.gif" height="300em"/>

@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_fly/pages/home/home_item_page.dart';
 import 'package:flutter_fly/pages/my/my_page.dart';
 import 'package:flutter_fly/pages/search/search_page.dart';
 import 'package:flutter_fly/pages/widgets_item/widget_page.dart';
+import 'package:flutter_fly/upgrade/flutter_app_upgrade.dart';
 import 'package:flutter_fly/widgets/fluid_nav_bar/fluid_nav_bar.dart';
+
+import '../../http/http_factory.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,6 +29,9 @@ class _HomePage extends State<HomePage> {
   void initState() {
     super.initState();
     _appBar = _defaultAppBar;
+    AppUpgrade.appUpgrade(context, _checkAppInfo(true),
+        okBackgroundColors: [const Color(0xFF5DC782), const Color(0xFF5DC782)],
+        progressBarColor: const Color(0xFF5DC782).withOpacity(.5));
   }
 
   @override
@@ -84,7 +92,7 @@ class _HomePage extends State<HomePage> {
     } else {
       _appBar = _defaultAppBar;
     }
-    setState((){});
+    setState(() {});
   }
 
   AppBar getWidgetAppBar() {
@@ -105,5 +113,27 @@ class _HomePage extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  Future<AppUpgradeInfo> _checkAppInfo(bool isUpgrade) async {
+    if (isUpgrade) {
+      var updateInfo = await HttpFactory().getUpgradeInfo();
+      if (updateInfo.isEmpty) {
+        return Future.value(AppUpgradeInfo(title: '升级', contents: ['暂无升级版本']));
+      }
+      var appInfo = await FlutterUpgrade.appInfo;
+      if (updateInfo['version'] != appInfo.versionName) {
+        return Future.value(AppUpgradeInfo(
+          title: updateInfo['title'],
+          contents: (updateInfo['content'] as String).split('\r\n'),
+          apkDownloadUrl: updateInfo['apkDownloadUrl'],
+          force: updateInfo['force'],
+        ));
+      }
+
+      return Future.value(null);
+    } else {
+      return Future.value(null);
+    }
   }
 }
