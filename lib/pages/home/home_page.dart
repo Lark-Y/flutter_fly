@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_fly/http/http_factory.dart';
 import 'package:flutter_fly/pages/my/my_page.dart';
 import 'package:flutter_fly/pages/search/search_page.dart';
 import 'package:flutter_fly/pages/widgets_item/widget_page.dart';
+import 'package:flutter_fly/upgrade/flutter_app_upgrade.dart';
 import 'package:flutter_fly/widgets/fluid_nav_bar/fluid_nav_bar.dart';
 import 'home_item_page.dart';
-// import 'package:flutter_app_upgrade/flutter_app_upgrade.dart';
 
 ///
 /// des: 首页底部导航及页面切换
@@ -32,26 +31,30 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _appBar = _defaultAppBar;
-    // AppUpgrade.appUpgrade(context, _checkAppInfo(),
-    //     okBackgroundColors: [Color(0xFF5DC782), Color(0xFF5DC782)],
-    //     progressBarColor: Color(0xFF5DC782).withOpacity(.5));
+    AppUpgrade.appUpgrade(context, _checkAppInfo(true),
+        okBackgroundColors: [Color(0xFF5DC782), Color(0xFF5DC782)],
+        progressBarColor: Color(0xFF5DC782).withOpacity(.5));
   }
 
-  ///
-  /// 检测app升级
-  ///
-  // Future<AppUpgradeInfo> _checkAppInfo() async {
-  //   var updateInfo = await HttpFactory().getUpgradeInfo();
-  //   var appInfo = await FlutterUpgrade.appInfo;
-  //   if (updateInfo['version'] != appInfo.versionName) {
-  //     return Future.value(AppUpgradeInfo(
-  //       title: updateInfo['title'],
-  //       contents: (updateInfo['content'] as String).split('\r\n'),
-  //       apkDownloadUrl: updateInfo['apkDownloadUrl'],
-  //       force: updateInfo['force'],
-  //     ));
-  //   }
-  // }
+
+  Future<AppUpgradeInfo> _checkAppInfo(bool isUpgrade) async {
+    if (isUpgrade) {
+      var updateInfo = HttpFactory().getUpgradeInfo();
+      if (updateInfo == null || updateInfo.isEmpty) {
+        return Future.value(AppUpgradeInfo(title: '升级', contents: ['暂无升级版本']));
+      }
+      var appInfo = await FlutterUpgrade.appInfo;
+      if (updateInfo['version'] != appInfo.versionName) {
+        return Future.value(AppUpgradeInfo(
+          title: updateInfo['title'],
+          contents: (updateInfo['content'] as String).split('\r\n'),
+          apkDownloadUrl: updateInfo['apkDownloadUrl'],
+          force: updateInfo['force'],
+        ));
+      }
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -126,4 +129,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+
 }

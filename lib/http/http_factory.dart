@@ -41,10 +41,9 @@ class HttpFactory {
   ///
   /// 获取升级信息
   ///
-  getUpgradeInfo() async {
-    var response = await _dio.get('flutter_fly_upgrade.json');
+  getUpgradeInfo() {
+    var response = _dio.get('flutter_fly_upgrade.json');
     //暂时不提供该api
     return '';
-    return response.data;
   }
 }

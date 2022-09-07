@@ -24,15 +24,15 @@ class MyDetailPage extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          _buildItem('微信号','laomengit',(){}),
+          _buildItem('微信号','wx666',(){}),
           SizedBox(
             height: 1,
           ),
-          _buildItem('公众号','老孟程序员',(){}),
+          _buildItem('公众号','Java程序员',(){}),
           SizedBox(
             height: 1,
           ),
-          _buildItem('博客','http://laomengit.com',(){}),
+          _buildItem('博客','http://weibo.com',(){}),
 
         ],
       ),

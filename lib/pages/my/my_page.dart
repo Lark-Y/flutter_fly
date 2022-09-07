@@ -86,7 +86,7 @@ class _MyPageState extends State<MyPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '老孟程序员',
+                      'Java程序员',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -94,7 +94,7 @@ class _MyPageState extends State<MyPage> {
                       height: 10,
                     ),
                     Text(
-                      '一枚有态度的程序员',
+                      '专业跑路程序员',
                       style: TextStyle(color: Color(0xFF727272)),
                     ),
                   ],
