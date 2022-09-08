@@ -21,7 +21,7 @@ master使用flutter 3.x构建，如果你的flutter版本是2.x，请切换分�
 
 App升级功能：
 
-<img src="https://github.com/781238222/imgs/raw/master/flutter_upgrade/app_upgrade_3.png" height="300em"/><img src="https://github.com/781238222/imgs/raw/master/flutter_upgrade/app_upgrade_4.gif" height="300em"/><img src="https://github.com/781238222/imgs/raw/master/flutter_upgrade/app_upgrade_5.png" height="300em"/><img src="https://github.com/781238222/imgs/raw/master/flutter_upgrade/app_upgrade_6.png" height="300em"/><img src="https://github.com/781238222/imgs/raw/master/flutter_upgrade/app_upgrade_7.png" height="300em"/>
+<img src="https://raw.githubusercontent.com/Lark-Y/flutter_fly/master/assets/preview/app_upgrade_3.png" height="300em"/><img src="https://raw.githubusercontent.com/Lark-Y/flutter_fly/master/assets/preview/app_upgrade_4.gif" height="300em"/><img src="https://raw.githubusercontent.com/Lark-Y/flutter_fly/master/assets/preview/app_upgrade_5.png" height="300em"/><img src="https://raw.githubusercontent.com/Lark-Y/flutter_fly/master/assets/preview/app_upgrade_6.png" height="300em"/><img src="https://raw.githubusercontent.com/Lark-Y/flutter_fly/master/assets/preview/app_upgrade_7.png" height="300em"/>
 
 
 
